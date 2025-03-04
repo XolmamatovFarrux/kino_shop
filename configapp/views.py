@@ -22,3 +22,4 @@ def actor(request):
         'actors': actors
     }
     return render(request, 'actor.html', context=context)
+# https://github.com/X  olmamatovFarrux/kino_shop

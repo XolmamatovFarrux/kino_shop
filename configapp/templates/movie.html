@@ -51,37 +51,35 @@
         </ul>
     </div>
     <div class="col-8 mt-4">
-        <div class="card mb-3" >
-            <div class="row g-0">
-                <div class="col-md-4">
-                    {% if item.imdb_id %}
-                        <img src="{{ item.imdb_id.url }}" class="img-fluid rounded-start" alt="Movie Image">
-                    {% else %}
-                        <img src="https://picsum.photos/images" class="img-fluid rounded-start" alt="  ">
-                    {% endif %}
+        {% for item in movies %}
+            <div class="card">
+                <div class="card-header">
+                    {{ item.actors }}
                 </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        {% for item in movies %}
-                            <h5 class="card-title">{{ item.name }}</h5>
-                            <p class="card-text">{{ item.genre }}</p>
-                            <p class="card-text">{{ item.year }}</p>
-                            <p class="card-text">Actors
-                                {% for item in actors %}
-                                    {{ item.name }}
-                                {% endfor %}
-                            </p>
-                            <p class="card-text">
-                                <small class="text-muted">{{ item.created_at }}</small>
-                            </p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                <div class="card-body">
+                    {% if item.imdb_id %}
+                        <img src="{{ item.imdb_id.url }}" alt="" width="250 px">
+                    {% else %}
+                        <img src="https://picsum.photos/images" alt="">
+                    {% endif %}
+                    <h5 class="card-title">{{ item.name }}</h5>
+                    <p class="card-text">{{ item.genre }}</p>
+                    <p class="card-text">{{ item.year }}</p>
+                    <p class="card-text"><a href="">Actors</a>
+                        {% for item in actors %}
+                            {{ item.name }}
                         {% endfor %}
-                    </div>
+                    </p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+                <div class="card-footer text-muted">
+                    2 days ago
                 </div>
             </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
+
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
